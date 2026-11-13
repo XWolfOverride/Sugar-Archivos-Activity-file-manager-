@@ -1,0 +1,30 @@
+msgid ""
+msgstr "Project-Id-Version: image\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: plugins/image/plugin.py:33
+msgid "Image viewer"
+msgstr "Visor de imágenes"
+
+#: plugins/image/plugin.py:93
+msgid "Actual size"
+msgstr "Tamaño real"
+
+#: plugins/image/plugin.py:134
+msgid "Loading…"
+msgstr "Cargando…"
+
+#: plugins/image/plugin.py:81
+msgid "Previous image"
+msgstr "Imagen anterior"
+
+#: plugins/image/plugin.py:83
+msgid "Next image"
+msgstr "Imagen siguiente"
+
+#: plugins/image/plugin.py:144
+msgid "Too big to show at actual size"
+msgstr "Demasiado grande para verla a tamaño real"
+
+#: plugins/image/plugin.py:153
+msgid "Could not load the image"
+msgstr "No se pudo cargar la imagen"

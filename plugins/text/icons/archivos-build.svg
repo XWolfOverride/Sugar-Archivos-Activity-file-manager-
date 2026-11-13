@@ -1,0 +1,7 @@
+<?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 55 55" height="55px" version="1.1" viewBox="0 0 55 55" width="55px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g display="block" id="archivos-build">
+	<circle cx="27.5" cy="27.5" r="22.5" fill="#FFFFFF"/>
+	<g transform="rotate(45 27.5 27.5)">
+		<rect x="25.5" y="23" width="4" height="19" rx="1.5" ry="1.5" fill="#4C4D4F" stroke="#4C4D4F" stroke-width="1.5"/>
+		<rect x="19" y="13" width="17" height="9" rx="2" ry="2" fill="#4C4D4F" stroke="#4C4D4F" stroke-width="2" stroke-linejoin="round"/>
+	</g>
+</g></svg>

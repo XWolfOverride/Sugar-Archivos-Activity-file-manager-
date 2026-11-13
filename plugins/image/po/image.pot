@@ -1,0 +1,31 @@
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: image\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: plugins/image/plugin.py:33
+msgid "Image viewer"
+msgstr ""
+
+#: plugins/image/plugin.py:93
+msgid "Actual size"
+msgstr ""
+
+#: plugins/image/plugin.py:134
+msgid "Loading…"
+msgstr ""
+
+#: plugins/image/plugin.py:81
+msgid "Previous image"
+msgstr ""
+
+#: plugins/image/plugin.py:83
+msgid "Next image"
+msgstr ""
+
+#: plugins/image/plugin.py:144
+msgid "Too big to show at actual size"
+msgstr ""
+
+#: plugins/image/plugin.py:153
+msgid "Could not load the image"
+msgstr ""

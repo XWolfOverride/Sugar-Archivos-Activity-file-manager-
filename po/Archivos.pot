@@ -1,0 +1,287 @@
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: Archivos\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: archives.py:128
+msgid "Nothing to archive"
+msgstr ""
+
+#: archives.py:136
+msgid "archive"
+msgstr ""
+
+#: archives.py:196 archives.py:219 archives.py:212 archives.py:281
+msgid "Unsafe archive: a path leaves the destination folder"
+msgstr ""
+
+#: archives.py:323 archives.py:217 archives.py:265 archives.py:381 archives.py:386
+msgid "Not a valid archive"
+msgstr ""
+
+#: archives.py:347 archives.py:131 fileops.py:415 fileops.py:446 fileops.py:479
+msgid "The item no longer exists"
+msgstr ""
+
+#: archives.py:350
+msgid "Not a supported archive"
+msgstr ""
+
+#: archives.py:166
+msgid "Could not create the archive"
+msgstr ""
+
+#: archives.py:360 archives.py:388
+msgid "Could not extract"
+msgstr ""
+
+#: archivos.py:31
+msgid "Copying"
+msgstr ""
+
+#: archivos.py:31
+msgid "Moving"
+msgstr ""
+
+#: archivos.py:32
+msgid "Deleting"
+msgstr ""
+
+#: archivos.py:32 archivos.py:33
+msgid "Compressing"
+msgstr ""
+
+#: archivos.py:33
+msgid "Extracting"
+msgstr ""
+
+#: archivos.py:496
+msgid "This cannot be undone."
+msgstr ""
+
+#: archivos.py:495
+msgid "Delete these items?"
+msgstr ""
+
+#: archivos.py:516
+msgid "Error"
+msgstr ""
+
+#: archivos.py:519
+msgid "OK"
+msgstr ""
+
+#: archivos.py:577
+msgid "Save changes before closing?"
+msgstr ""
+
+#: archivos.py:138 fileview.py:533
+msgid "Copy"
+msgstr ""
+
+#: archivos.py:139 fileview.py:534
+msgid "Cut"
+msgstr ""
+
+#: archivos.py:140 fileview.py:539
+msgid "Paste"
+msgstr ""
+
+#: archivos.py:141 fileview.py:543
+msgid "Rename"
+msgstr ""
+
+#: archivos.py:142 fileview.py:544
+msgid "Delete"
+msgstr ""
+
+#: archivos.py:153 fileview.py:109
+msgid "Up"
+msgstr ""
+
+#: archivos.py:154 fileview.py:568
+msgid "Refresh"
+msgstr ""
+
+#: archivos.py:166 fileview.py:561 fileview.py:650
+msgid "New folder"
+msgstr ""
+
+#: archivos.py:168 fileview.py:562 fileview.py:660
+msgid "New file"
+msgstr ""
+
+#: archivos.py:195 archivos.py:534
+msgid "Cancel"
+msgstr ""
+
+#: archivos.py:282
+msgid "Your changes will be lost if you do not save them."
+msgstr ""
+
+#: archivos.py:492
+#, python-format
+msgid "Delete \"%s\"?"
+msgstr ""
+
+#: archivos.py:532
+msgid "Save"
+msgstr ""
+
+#: archivos.py:533
+msgid "Discard"
+msgstr ""
+
+#: archivos.py:281
+#, python-format
+msgid "Save changes to \"%s\"?"
+msgstr ""
+
+#: archivos.py:375 fileview.py:419
+msgid "Could not open the file"
+msgstr ""
+
+#: fileops.py:80
+msgid "Cancelled"
+msgstr ""
+
+#: fileops.py:214
+msgid "Invalid name"
+msgstr ""
+
+#: fileops.py:247 fileops.py:287 fileops.py:276
+msgid "A file with that name already exists"
+msgstr ""
+
+#: fileops.py:419 fileops.py:452
+msgid "Cannot copy a folder into itself"
+msgstr ""
+
+#: fileops.py:477
+msgid "Refusing to operate on the root folder"
+msgstr ""
+
+#: fileops.py:251
+msgid "Could not rename"
+msgstr ""
+
+#: fileops.py:277
+msgid "Could not create the file"
+msgstr ""
+
+#: fileops.py:291
+msgid "Could not create the folder"
+msgstr ""
+
+#: fileops.py:431
+msgid "Could not copy"
+msgstr ""
+
+#: fileops.py:500
+msgid "Could not delete"
+msgstr ""
+
+#: fileops.py:459
+msgid "Could not move"
+msgstr ""
+
+#: fileops.py:129 fileview.py:358
+msgid "Cannot read this folder"
+msgstr ""
+
+#: fileview.py:114 fileview.py:189
+msgid "Home"
+msgstr ""
+
+#: fileview.py
+msgid "Drives"
+msgstr ""
+
+#: fileview.py
+msgid "No drives mounted"
+msgstr ""
+
+#: fileview.py:133
+msgid "Name"
+msgstr ""
+
+#: fileview.py:315
+#, python-format
+msgid "%(folders)s and %(size)s in %(files)s"
+msgstr ""
+
+#: fileview.py:159
+msgid "Size"
+msgstr ""
+
+#: fileview.py:163
+msgid "Modified"
+msgstr ""
+
+#: fileview.py:310
+#, python-format
+msgid "%d selected"
+msgid_plural "%d selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: fileview.py:522
+msgid "Open"
+msgstr ""
+
+#: fileview.py:563
+msgid "Show hidden files"
+msgstr ""
+
+#: fileview.py:316
+#, python-format
+msgid "%d folder"
+msgid_plural "%d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: fileview.py:317
+#, python-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: fileview.py:415
+msgid "No application available for this file"
+msgstr ""
+
+#: fileview.py:524
+msgid "Open in new tab"
+msgstr ""
+
+#: fileview.py:537
+msgid "Paste into folder"
+msgstr ""
+
+#: fileview.py:548
+msgid "Extract"
+msgstr ""
+
+#: fileview.py:551
+msgid "Create .tar"
+msgstr ""
+
+#: fileview.py:552
+msgid "Create .tar.gz"
+msgstr ""
+
+#: fileview.py:557
+msgid "Compress"
+msgstr ""
+
+#: fileview.py:354
+msgid "Not a folder"
+msgstr ""
+
+#: fileview.py:528
+msgid "Open with"
+msgstr ""
+
+#: i18n.py:226
+msgid "DECIMAL_SEPARATOR"
+msgstr ""

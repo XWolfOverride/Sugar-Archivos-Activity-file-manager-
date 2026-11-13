@@ -1,0 +1,11 @@
+[Activity]
+name = Archivos
+activity_version = 0.9
+bundle_id = org.xwolf.Archivos
+exec = sugar-activity archivos.ArchivosActivity
+icon = activity-archivos
+mime_types =
+license = MIT
+summary = Explorador de archivos sencillo, con pestañas.
+description = Explorador de archivos con pestañas, ligero, con visor de imágenes y editor de texto como plugins. Simple tabbed file manager with image viewer and text editor plugins.
+tags = Utilities;System

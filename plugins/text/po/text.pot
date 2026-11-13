@@ -1,0 +1,167 @@
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: text\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: plugins/text/plugin.py:48
+msgid "Text editor"
+msgstr ""
+
+#: plugins/text/plugin.py:68
+msgid "This looks like a binary file, not text"
+msgstr ""
+
+#: plugins/text/plugin.py:98
+msgid "Save"
+msgstr ""
+
+#: plugins/text/plugin.py
+msgid "Save all"
+msgstr ""
+
+#: plugins/text/plugin.py:100
+msgid "Undo"
+msgstr ""
+
+#: plugins/text/plugin.py:102
+msgid "Redo"
+msgstr ""
+
+#: plugins/text/plugin.py:112
+msgid "Wrap lines"
+msgstr ""
+
+#: plugins/text/plugin.py:129
+msgid "Build (build.sh)"
+msgstr ""
+
+#: plugins/text/plugin.py:132
+msgid "Run (run.sh)"
+msgstr ""
+
+#: plugins/text/plugin.py:135
+msgid "Stop"
+msgstr ""
+
+#: plugins/text/plugin.py:194
+msgid "Find"
+msgstr ""
+
+#: plugins/text/plugin.py:196
+msgid "Replace with"
+msgstr ""
+
+#: plugins/text/plugin.py:65
+#, python-format
+msgid "The file is too big for the editor (%s)"
+msgstr ""
+
+#: plugins/text/plugin.py:109
+msgid "Find and replace"
+msgstr ""
+
+#: plugins/text/plugin.py:115
+msgid "Smaller text"
+msgstr ""
+
+#: plugins/text/plugin.py:118
+msgid "Larger text"
+msgstr ""
+
+#: plugins/text/plugin.py:169 plugins/text/plugin.py:204
+msgid "Close"
+msgstr ""
+
+#: plugins/text/plugin.py:199
+msgid "Previous"
+msgstr ""
+
+#: plugins/text/plugin.py:200
+msgid "Next"
+msgstr ""
+
+#: plugins/text/plugin.py:201
+msgid "Replace"
+msgstr ""
+
+#: plugins/text/plugin.py:202
+msgid "Replace all"
+msgstr ""
+
+#: plugins/text/plugin.py:287
+#, python-format
+msgid "Line %(line)d, column %(col)d"
+msgstr ""
+
+#: plugins/text/plugin.py:290
+msgid "Plain text"
+msgstr ""
+
+#: plugins/text/plugin.py:292
+msgid "read only"
+msgstr ""
+
+#: plugins/text/plugin.py:304
+msgid "The file changed on disk"
+msgstr ""
+
+#: plugins/text/plugin.py:305
+msgid "Overwrite it with your version?"
+msgstr ""
+
+#: plugins/text/plugin.py:333
+msgid "Saved"
+msgstr ""
+
+#: plugins/text/plugin.py:371
+msgid "Not found"
+msgstr ""
+
+#: plugins/text/plugin.py:412
+#, python-format
+msgid "%d replacement"
+msgid_plural "%d replacements"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/text/plugin.py:166
+msgid "Output"
+msgstr ""
+
+#: plugins/text/plugin.py:325
+msgid "Error"
+msgstr ""
+
+#: plugins/text/plugin.py:332
+#, python-format
+msgid "The file had characters that %s cannot store; it was saved as UTF-8."
+msgstr ""
+
+#: plugins/text/plugin.py:483
+msgid "Stopped"
+msgstr ""
+
+#: plugins/text/plugin.py:306
+msgid "Overwrite"
+msgstr ""
+
+#: plugins/text/plugin.py:307
+msgid "Cancel"
+msgstr ""
+
+#: plugins/text/plugin.py:480
+msgid "Could not start the script"
+msgstr ""
+
+#: plugins/text/plugin.py:324
+msgid "Could not save the file"
+msgstr ""
+
+#: plugins/text/plugin.py:485
+#, python-format
+msgid "Killed by signal %d"
+msgstr ""
+
+#: plugins/text/plugin.py:487
+#, python-format
+msgid "Finished (exit code %d)"
+msgstr ""

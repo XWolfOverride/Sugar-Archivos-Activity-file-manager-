@@ -1,0 +1,286 @@
+msgid ""
+msgstr "Project-Id-Version: Archivos\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: archives.py:128
+msgid "Nothing to archive"
+msgstr "No hay nada que comprimir"
+
+#: archives.py:136
+msgid "archive"
+msgstr "archivo"
+
+#: archives.py:196 archives.py:219 archives.py:212 archives.py:281
+msgid "Unsafe archive: a path leaves the destination folder"
+msgstr "Archivo no seguro: una ruta sale de la carpeta de destino"
+
+#: archives.py:323 archives.py:217 archives.py:265 archives.py:381 archives.py:386
+msgid "Not a valid archive"
+msgstr "El archivo está dañado o no es un tar válido"
+
+#: archives.py:347 archives.py:131 fileops.py:415 fileops.py:446 fileops.py:479
+msgid "The item no longer exists"
+msgstr "El elemento ya no existe"
+
+#: archives.py:350
+msgid "Not a supported archive"
+msgstr "No es un archivo .tar o .tar.gz"
+
+#: archives.py:166
+msgid "Could not create the archive"
+msgstr "No se pudo crear el archivo comprimido"
+
+#: archives.py:360 archives.py:388
+msgid "Could not extract"
+msgstr "No se pudo extraer"
+
+#: archivos.py:31
+msgid "Copying"
+msgstr "Copiando"
+
+#: archivos.py:31
+msgid "Moving"
+msgstr "Moviendo"
+
+#: archivos.py:32
+msgid "Deleting"
+msgstr "Borrando"
+
+#: archivos.py:32 archivos.py:33
+msgid "Compressing"
+msgstr "Comprimiendo"
+
+#: archivos.py:33
+msgid "Extracting"
+msgstr "Extrayendo"
+
+#: archivos.py:496
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
+
+#: archivos.py:495
+msgid "Delete these items?"
+msgstr "¿Borrar estos elementos?"
+
+#: archivos.py:516
+msgid "Error"
+msgstr "Error"
+
+#: archivos.py:519
+msgid "OK"
+msgstr "Aceptar"
+
+#: archivos.py:577
+msgid "Save changes before closing?"
+msgstr "¿Guardar los cambios antes de cerrar?"
+
+#: archivos.py:138 fileview.py:533
+msgid "Copy"
+msgstr "Copiar"
+
+#: archivos.py:139 fileview.py:534
+msgid "Cut"
+msgstr "Cortar"
+
+#: archivos.py:140 fileview.py:539
+msgid "Paste"
+msgstr "Pegar"
+
+#: archivos.py:141 fileview.py:543
+msgid "Rename"
+msgstr "Renombrar"
+
+#: archivos.py:142 fileview.py:544
+msgid "Delete"
+msgstr "Borrar"
+
+#: archivos.py:153 fileview.py:109
+msgid "Up"
+msgstr "Subir"
+
+#: archivos.py:154 fileview.py:568
+msgid "Refresh"
+msgstr "Actualizar"
+
+#: archivos.py:166 fileview.py:561 fileview.py:650
+msgid "New folder"
+msgstr "Carpeta nueva"
+
+#: archivos.py:168 fileview.py:562 fileview.py:660
+msgid "New file"
+msgstr "Archivo nuevo"
+
+#: archivos.py:195 archivos.py:534
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: archivos.py:282
+msgid "Your changes will be lost if you do not save them."
+msgstr "Los cambios se perderán si no los guardas."
+
+#: archivos.py:492
+#, python-format
+msgid "Delete \"%s\"?"
+msgstr "¿Borrar «%s»?"
+
+#: archivos.py:532
+msgid "Save"
+msgstr "Guardar"
+
+#: archivos.py:533
+msgid "Discard"
+msgstr "Descartar"
+
+#: archivos.py:281
+#, python-format
+msgid "Save changes to \"%s\"?"
+msgstr "¿Guardar los cambios de «%s»?"
+
+#: archivos.py:375 fileview.py:419
+msgid "Could not open the file"
+msgstr "No se pudo abrir el archivo"
+
+#: fileops.py:80
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#: fileops.py:214
+msgid "Invalid name"
+msgstr "Nombre no válido"
+
+#: fileops.py:247 fileops.py:287 fileops.py:276
+msgid "A file with that name already exists"
+msgstr "Ya existe un archivo con ese nombre"
+
+#: fileops.py:419 fileops.py:452
+msgid "Cannot copy a folder into itself"
+msgstr "No se puede copiar una carpeta dentro de sí misma"
+
+#: fileops.py:477
+msgid "Refusing to operate on the root folder"
+msgstr "No se opera sobre la carpeta raíz"
+
+#: fileops.py:251
+msgid "Could not rename"
+msgstr "No se pudo renombrar"
+
+#: fileops.py:277
+msgid "Could not create the file"
+msgstr "No se pudo crear el archivo"
+
+#: fileops.py:291
+msgid "Could not create the folder"
+msgstr "No se pudo crear la carpeta"
+
+#: fileops.py:431
+msgid "Could not copy"
+msgstr "No se pudo copiar"
+
+#: fileops.py:500
+msgid "Could not delete"
+msgstr "No se pudo borrar"
+
+#: fileops.py:459
+msgid "Could not move"
+msgstr "No se pudo mover"
+
+#: fileops.py:129 fileview.py:358
+msgid "Cannot read this folder"
+msgstr "No se puede leer esta carpeta"
+
+#: fileview.py:114 fileview.py:189
+msgid "Home"
+msgstr "Carpeta personal"
+
+#: fileview.py
+msgid "Drives"
+msgstr "Unidades"
+
+#: fileview.py
+msgid "No drives mounted"
+msgstr "No hay unidades montadas"
+
+#: fileview.py:133
+msgid "Name"
+msgstr "Nombre"
+
+#: fileview.py:315
+#, python-format
+msgid "%(folders)s and %(size)s in %(files)s"
+msgstr "%(folders)s y %(size)s en %(files)s"
+
+#: fileview.py:159
+msgid "Size"
+msgstr "Tamaño"
+
+#: fileview.py:163
+msgid "Modified"
+msgstr "Modificado"
+
+#: fileview.py:310
+#, python-format
+msgid "%d selected"
+msgid_plural "%d selected"
+msgstr[0] "%d seleccionado"
+msgstr[1] "%d seleccionados"
+
+#: fileview.py:522
+msgid "Open"
+msgstr "Abrir"
+
+#: fileview.py:563
+msgid "Show hidden files"
+msgstr "Mostrar archivos ocultos"
+
+#: fileview.py:316
+#, python-format
+msgid "%d folder"
+msgid_plural "%d folders"
+msgstr[0] "%d carpeta"
+msgstr[1] "%d carpetas"
+
+#: fileview.py:317
+#, python-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] "%d archivo"
+msgstr[1] "%d archivos"
+
+#: fileview.py:415
+msgid "No application available for this file"
+msgstr "No hay ninguna aplicación para abrir este archivo"
+
+#: fileview.py:524
+msgid "Open in new tab"
+msgstr "Abrir en una pestaña nueva"
+
+#: fileview.py:537
+msgid "Paste into folder"
+msgstr "Pegar en la carpeta"
+
+#: fileview.py:548
+msgid "Extract"
+msgstr "Extraer"
+
+#: fileview.py:551
+msgid "Create .tar"
+msgstr "Crear .tar"
+
+#: fileview.py:552
+msgid "Create .tar.gz"
+msgstr "Crear .tar.gz"
+
+#: fileview.py:557
+msgid "Compress"
+msgstr "Comprimir"
+
+#: fileview.py:354
+msgid "Not a folder"
+msgstr "No es una carpeta"
+
+#: fileview.py:528
+msgid "Open with"
+msgstr "Abrir con"
+
+#: i18n.py:226
+msgid "DECIMAL_SEPARATOR"
+msgstr ","
