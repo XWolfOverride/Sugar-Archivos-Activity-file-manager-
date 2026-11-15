@@ -33,109 +33,121 @@ msgstr "No se pudo crear el archivo comprimido"
 msgid "Could not extract"
 msgstr "No se pudo extraer"
 
-#: archivos.py:31
+#: archivos.py:36
 msgid "Copying"
 msgstr "Copiando"
 
-#: archivos.py:31
+#: archivos.py:36
 msgid "Moving"
 msgstr "Moviendo"
 
-#: archivos.py:32
+#: archivos.py:37
 msgid "Deleting"
 msgstr "Borrando"
 
-#: archivos.py:32 archivos.py:33
+#: archivos.py:37 archivos.py:38
 msgid "Compressing"
 msgstr "Comprimiendo"
 
-#: archivos.py:33
+#: archivos.py:38
 msgid "Extracting"
 msgstr "Extrayendo"
 
-#: archivos.py:496
+#: archivos.py:627
 msgid "This cannot be undone."
 msgstr "Esto no se puede deshacer."
 
-#: archivos.py:495
+#: archivos.py:178
+msgid "Go to"
+msgstr "Ir a"
+
+#: archivos.py:626
 msgid "Delete these items?"
 msgstr "¿Borrar estos elementos?"
 
-#: archivos.py:516
+#: archivos.py:647
 msgid "Error"
 msgstr "Error"
 
-#: archivos.py:519
+#: archivos.py:650 propsdialog.py:115
 msgid "OK"
 msgstr "Aceptar"
 
-#: archivos.py:577
+#: archivos.py:708
 msgid "Save changes before closing?"
 msgstr "¿Guardar los cambios antes de cerrar?"
 
-#: archivos.py:138 fileview.py:533
+#: archivos.py:147 fileview.py:573
 msgid "Copy"
 msgstr "Copiar"
 
-#: archivos.py:139 fileview.py:534
+#: archivos.py:148 fileview.py:574
 msgid "Cut"
 msgstr "Cortar"
 
-#: archivos.py:140 fileview.py:539
+#: archivos.py:149 fileview.py:579
 msgid "Paste"
 msgstr "Pegar"
 
-#: archivos.py:141 fileview.py:543
+#: archivos.py:150 fileview.py:583
 msgid "Rename"
 msgstr "Renombrar"
 
-#: archivos.py:142 fileview.py:544
+#: archivos.py:151 fileview.py:584
 msgid "Delete"
 msgstr "Borrar"
 
-#: archivos.py:153 fileview.py:109
+#: archivos.py:162 fileview.py:110
 msgid "Up"
 msgstr "Subir"
 
-#: archivos.py:154 fileview.py:568
+#: archivos.py:163 fileview.py:608
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: archivos.py:166 fileview.py:561 fileview.py:650
+#: archivos.py:185 fileview.py:601 fileview.py:694
 msgid "New folder"
 msgstr "Carpeta nueva"
 
-#: archivos.py:168 fileview.py:562 fileview.py:660
+#: archivos.py:187 fileview.py:602 fileview.py:704
 msgid "New file"
 msgstr "Archivo nuevo"
 
-#: archivos.py:195 archivos.py:534
+#: archivos.py:217 archivos.py:665 propsdialog.py:111
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: archivos.py:282
+#: archivos.py:346
 msgid "Your changes will be lost if you do not save them."
 msgstr "Los cambios se perderán si no los guardas."
 
-#: archivos.py:492
+#: archivos.py:530
+msgid "No drives mounted"
+msgstr "No hay unidades montadas"
+
+#: archivos.py:535
+msgid "Remove missing favorites"
+msgstr "Quitar favoritas que ya no existen"
+
+#: archivos.py:623
 #, python-format
 msgid "Delete \"%s\"?"
 msgstr "¿Borrar «%s»?"
 
-#: archivos.py:532
+#: archivos.py:663
 msgid "Save"
 msgstr "Guardar"
 
-#: archivos.py:533
+#: archivos.py:664
 msgid "Discard"
 msgstr "Descartar"
 
-#: archivos.py:281
+#: archivos.py:345
 #, python-format
 msgid "Save changes to \"%s\"?"
 msgstr "¿Guardar los cambios de «%s»?"
 
-#: archivos.py:375 fileview.py:419
+#: archivos.py:441 fileview.py:418 fileview.py:449
 msgid "Could not open the file"
 msgstr "No se pudo abrir el archivo"
 
@@ -183,104 +195,194 @@ msgstr "No se pudo borrar"
 msgid "Could not move"
 msgstr "No se pudo mover"
 
-#: fileops.py:129 fileview.py:358
+#: fileops.py:129 fileview.py:359
 msgid "Cannot read this folder"
 msgstr "No se puede leer esta carpeta"
 
-#: fileview.py:114 fileview.py:189
+#: fileprops.py:82
+msgid "Could not read"
+msgstr "No se pudo leer"
+
+#: fileprops.py:152
+msgid "Unknown user"
+msgstr "Usuario desconocido"
+
+#: fileprops.py:159
+msgid "Unknown group"
+msgstr "Grupo desconocido"
+
+#: fileprops.py:182
+msgid "Could not change"
+msgstr "No se pudo cambiar"
+
+#: fileview.py:115 fileview.py:190
 msgid "Home"
 msgstr "Carpeta personal"
 
-#: fileview.py
-msgid "Drives"
-msgstr "Unidades"
-
-#: fileview.py
-msgid "No drives mounted"
-msgstr "No hay unidades montadas"
-
-#: fileview.py:133
+#: fileview.py:134
 msgid "Name"
 msgstr "Nombre"
 
-#: fileview.py:315
+#: fileview.py:316
 #, python-format
 msgid "%(folders)s and %(size)s in %(files)s"
 msgstr "%(folders)s y %(size)s en %(files)s"
 
-#: fileview.py:159
+#: fileview.py:610
+msgid "Properties"
+msgstr "Propiedades"
+
+#: fileview.py:160 propsdialog.py:166
 msgid "Size"
 msgstr "Tamaño"
 
-#: fileview.py:163
+#: fileview.py:164 propsdialog.py:167
 msgid "Modified"
 msgstr "Modificado"
 
-#: fileview.py:310
+#: fileview.py:311
 #, python-format
 msgid "%d selected"
 msgid_plural "%d selected"
 msgstr[0] "%d seleccionado"
 msgstr[1] "%d seleccionados"
 
-#: fileview.py:522
+#: fileview.py:562
 msgid "Open"
 msgstr "Abrir"
 
-#: fileview.py:563
+#: fileview.py:603
 msgid "Show hidden files"
 msgstr "Mostrar archivos ocultos"
 
-#: fileview.py:316
+#: fileview.py:317
 #, python-format
 msgid "%d folder"
 msgid_plural "%d folders"
 msgstr[0] "%d carpeta"
 msgstr[1] "%d carpetas"
 
-#: fileview.py:317
+#: fileview.py:318
 #, python-format
 msgid "%d file"
 msgid_plural "%d files"
 msgstr[0] "%d archivo"
 msgstr[1] "%d archivos"
 
-#: fileview.py:415
-msgid "No application available for this file"
-msgstr "No hay ninguna aplicación para abrir este archivo"
-
-#: fileview.py:524
+#: fileview.py:564
 msgid "Open in new tab"
 msgstr "Abrir en una pestaña nueva"
 
-#: fileview.py:537
+#: fileview.py:577
 msgid "Paste into folder"
 msgstr "Pegar en la carpeta"
 
-#: fileview.py:548
+#: fileview.py:588
 msgid "Extract"
 msgstr "Extraer"
 
-#: fileview.py:551
+#: fileview.py:591
 msgid "Create .tar"
 msgstr "Crear .tar"
 
-#: fileview.py:552
+#: fileview.py:592
 msgid "Create .tar.gz"
 msgstr "Crear .tar.gz"
 
-#: fileview.py:557
+#: fileview.py:597
 msgid "Compress"
 msgstr "Comprimir"
 
-#: fileview.py:354
+#: fileview.py:355
 msgid "Not a folder"
 msgstr "No es una carpeta"
 
-#: fileview.py:528
+#: fileview.py:440
+msgid "No application available for this file"
+msgstr "No hay ninguna aplicación para abrir este archivo"
+
+#: fileview.py:568
 msgid "Open with"
 msgstr "Abrir con"
 
 #: i18n.py:226
 msgid "DECIMAL_SEPARATOR"
 msgstr ","
+
+#: propsdialog.py:277
+#, python-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d elemento"
+msgstr[1] "%d elementos"
+
+#: propsdialog.py:210
+msgid "Read"
+msgstr "Lectura"
+
+#: propsdialog.py:210
+msgid "Write"
+msgstr "Escritura"
+
+#: propsdialog.py:210
+msgid "Execute"
+msgstr "Ejecución"
+
+#: propsdialog.py:104
+msgid "Favorite folder"
+msgstr "Carpeta favorita"
+
+#: propsdialog.py:158
+msgid "Type"
+msgstr "Tipo"
+
+#: propsdialog.py:159
+msgid "Location"
+msgstr "Ubicación"
+
+#: propsdialog.py:168
+msgid "Accessed"
+msgstr "Último acceso"
+
+#: propsdialog.py:169
+msgid "Changed"
+msgstr "Cambio de estado"
+
+#: propsdialog.py:170
+msgid "Created"
+msgstr "Creado"
+
+#: propsdialog.py:202
+msgid "Permissions"
+msgstr "Permisos"
+
+#: propsdialog.py:215 propsdialog.py:190
+msgid "Owner"
+msgstr "Propietario"
+
+#: propsdialog.py:215 propsdialog.py:191
+msgid "Group"
+msgstr "Grupo"
+
+#: propsdialog.py:215
+msgid "Others"
+msgstr "Otros"
+
+#: propsdialog.py:283
+#, python-format
+msgid "%d byte"
+msgid_plural "%d bytes"
+msgstr[0] "%d byte"
+msgstr[1] "%d bytes"
+
+#: propsdialog.py:161
+msgid "Link to"
+msgstr "Enlace a"
+
+#: propsdialog.py:171
+msgid "Not recorded"
+msgstr "No consta"
+
+#: propsdialog.py:164
+msgid "Contents"
+msgstr "Contenido"

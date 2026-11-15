@@ -15,19 +15,10 @@ from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk, Pango
 import archives
 import fileops
 import i18n
-import places
 import sugaractivities
 from i18n import ntr, tr
 from sugar3.graphics import style
 from sugar3.graphics.icon import Icon
-from sugar3.graphics.xocolor import XoColor
-
-# (trazo, relleno) de los iconos de las unidades: una pareja por unidad, en
-# el orden del menú.
-_DRIVE_COLORS = [('#00588C', '#8BD1FF'), ('#B20008', '#FF8F91'),
-                 ('#005FE4', '#FFD400'), ('#3E8B00', '#B7F36B'),
-                 ('#8E00B0', '#E8A5FF'), ('#C65600', '#FFC48A'),
-                 ('#00796B', '#7DE3D2'), ('#6D6D6D', '#D4D4D4')]
 
 _FILL_CHUNK = 400          # filas que se añaden por cada pasada de la interfaz
 _NAV_GUARD = 0.45          # s tras navegar en que se ignoran clics (doble clic)
@@ -123,16 +114,10 @@ class FileView(Gtk.Box):
         home.add(Icon(icon_name='archivos-home', pixel_size=24))
         home.set_tooltip_text(tr('Home'))
         home.connect('clicked', lambda _button: self.go_home())
-        places_button = Gtk.Button()
-        places_button.set_relief(Gtk.ReliefStyle.NONE)
-        places_button.add(Icon(icon_name='archivos-usb', pixel_size=24))
-        places_button.set_tooltip_text(tr('Drives'))
-        places_button.connect('clicked', self._on_places_clicked)
         self.entry = Gtk.Entry()
         self.entry.set_text(self.path)
         self.entry.connect('activate', self._on_entry_activate)
         bar.pack_start(home, False, False, 0)
-        bar.pack_start(places_button, False, False, 0)
         bar.pack_start(up, False, False, 0)
         bar.pack_start(self.entry, True, True, 0)
         self.pack_start(bar, False, False, 0)
@@ -388,34 +373,13 @@ class FileView(Gtk.Box):
         """Va a la carpeta personal del usuario."""
         self.navigate(os.path.expanduser('~'))
 
-    def _on_places_clicked(self, button):
-        """Menú con las unidades extraíbles montadas (se consultan al abrirlo).
-
-        Cada una lleva el icono de memoria USB en un color distinto (por su
-        posición en la lista), para reconocerlas aunque haya varias particiones.
-        """
-        menu = Gtk.Menu()
-        drives = places.removable_mounts()
-        for index, (name, path) in enumerate(drives):
-            stroke, fill = _DRIVE_COLORS[index % len(_DRIVE_COLORS)]
-            row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-            row.pack_start(Icon(icon_name='archivos-drive', pixel_size=28,
-                                xo_color=XoColor('%s,%s' % (stroke, fill))),
-                           False, False, 0)
-            label = Gtk.Label(label=name)
-            label.set_alignment(0, 0.5)
-            row.pack_start(label, True, True, 0)
-            item = Gtk.MenuItem()
-            item.add(row)
-            item.set_tooltip_text(path)
-            item.connect('activate', lambda _i, p=path: self.navigate(p))
-            menu.append(item)
-        if not drives:
-            item = Gtk.MenuItem(label=tr('No drives mounted'))
-            item.set_sensitive(False)
-            menu.append(item)
-        menu.show_all()
-        menu.popup(None, None, None, None, 1, Gtk.get_current_event_time())
+    def show_properties(self):
+        """Propiedades del elemento seleccionado (o de la carpeta actual si no
+        hay selección)."""
+        paths = self.selected_paths()
+        if len(paths) > 1:
+            return
+        self.app.show_properties(paths[0] if paths else self.path, self)
 
     def go_up(self):
         parent = os.path.dirname(self.path) or '/'
@@ -642,6 +606,8 @@ class FileView(Gtk.Box):
                       lambda i: self.app.set_show_hidden(i.get_active()))
         menu.append(check)
         add(tr('Refresh'), self.reload)
+        separator()
+        add(tr('Properties'), self.show_properties, len(names) <= 1)
         menu.show_all()
         menu.attach_to_widget(self.tree, None)
         self._menu = menu
@@ -662,6 +628,8 @@ class FileView(Gtk.Box):
             self.app.do_delete(self.selected_paths())
         elif name == 'F5':
             self.reload()
+        elif alt and name in ('Return', 'KP_Enter'):
+            self.show_properties()
         elif name == 'BackSpace' or (alt and name == 'Up'):
             self.go_up()
         elif alt and name == 'Home':

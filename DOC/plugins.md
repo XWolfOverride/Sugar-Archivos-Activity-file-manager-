@@ -2,12 +2,13 @@
 
 Los plugins abren archivos **dentro** de la actividad, en una pestaña que el propio
 plugin controla (su interfaz, su título, sus cambios sin guardar y su estado).
-Cuantos más plugins haya, más opciones internas aparecen en *Abrir con*. Traen dos:
+Cuantos más plugins haya, más opciones internas aparecen en *Abrir con*. Traen tres:
 
 | Plugin | Abre | Qué ofrece |
 |---|---|---|
 | `image` (Visor de imágenes) | todo lo que decodifica GdkPixbuf (jpeg, png, gif, svg, bmp...) | Carga perezosa y reducida (12 MP en ~2 s), ← / → entre las imágenes de la carpeta, tamaño real si cabe en memoria |
 | `text` (Editor de texto) | texto y código (`.pas`, `.py`, `.sh`, `.ini`, `Makefile`...); cualquier otro archivo solo como opción | GtkSourceView: números de línea, resaltado, deshacer/rehacer, buscar y reemplazar, guardado atómico, conserva codificación y finales de línea |
+| `video` (Reproductor multimedia) | Ogg/Theora y WebM/VP8 con Vorbis (clic); módulos de tracker y MP3 si hay decodificador (clic); Matroska solo en «Abrir con» | GStreamer `playbin` con `xvimagesink`; reproducir/pausa, posición, volumen; espacio, ←/→ (5 s), AvPág/RePág (30 s), ↑/↓ (volumen), F (pantalla completa) |
 
 ### Build y Run del editor
 
@@ -28,6 +29,65 @@ desaparecen según haya o no los scripts (solo cuentan los de **la misma carpeta
   los grupos en marcha y, a 1 s, KILL. No cubre un `kill -9` de la propia actividad.
 - Solo se ejecuta al pulsar el botón; nunca por abrir un archivo.
 - El código está en `plugins/text/scriptrunner.py` (sin GTK, con sus pruebas).
+
+### Vídeo y audio
+
+- Solo se reproduce lo que decodifica GStreamer del sistema; en el XO-1 (Fedora 18, sin libav)
+  son Theora, VP8 y Vorbis en Ogg o WebM. Con otra cosa la pestaña lo dice (`No se pudo reproducir`).
+- GStreamer se importa al abrir la primera pestaña, no al cargar el plugin.
+- La imagen sale por `GstVideo.VideoOverlay` sobre la ventana nativa de un `Gtk.DrawingArea`;
+  en PyGObject 3.4 los métodos de la interfaz se llaman como función de clase
+  (`VideoOverlay.set_window_handle(player, xid)`, `VideoOverlay.expose(player)`).
+- **Trampa del overlay Xv:** el `Gtk.DrawingArea` que recibe el vídeo necesita `set_double_buffered(False)`,
+  `set_app_paintable(True)` y `window.set_background_pattern(None)`; con el doble búfer GTK repinta
+  encima y el vídeo se ve un instante y desaparece (el audio sigue). `xvimagesink` con
+  `handle-events=False` para no quitarle a GTK sus eventos. Las capturas de pantalla (ni `ximagesrc`)
+  no ven el overlay: se prueba a ojo.
+- La actividad pone `enable_fullscreen_mode = False`: `Window.fullscreen()` de Sugar oculta barra y
+  bandeja y, si no, enseña el botón de salir en una esquina (donde está el marco de Sugar).
+- **Dispositivos de un solo uso:** en el XO-1 el audio (ALSA directo, sin PulseAudio ni mezclador)
+  y el overlay Xv los abre un solo reproductor a la vez; una pestaña en pausa los sigue reteniendo (y
+  bloquea otras pestañas y los sonidos de Sugar). Por eso: al empezar a reproducir, las demás pestañas
+  multimedia se sueltan (`_release_others`: se destruye su pipeline y se recuerda la posición); una
+  pestaña oculta con vídeo se suelta; el audio puede sonar en segundo plano; una pestaña quieta se
+  suelta a los 10 s (audio y final de reproducción) o 120 s (vídeo en pausa); al volver, el vídeo se
+  recrea en pausa en su posición y el audio al pulsar reproducir. El audio usa `fakesink` como
+  sumidero de vídeo (no toca Xv).
+- **Solo audio** (tipo `audio/*`, o sin flujo de vídeo tras cargar): panel negro (el área no tiene
+  fondo, hay que pintarlo en `draw`), sin botones de modos de vídeo y sin pantalla completa.
+- Tres modos (botones a la derecha del volumen): **normal** (ajustado a la ventana con su
+  proporción), **1:1** (tamaño real, centrado; si no cabe, se ajusta) y **pantalla completa**
+  (sin barras ni controles; Intro o espacio pausan, Esc vuelve al normal). La pantalla completa la
+  hace la actividad (`host.set_fullscreen(True)`: oculta barra, pestañas y progreso).
+- Memoria medida en el XO: ~4 MB al iniciar GStreamer y ~5 MB más al reproducir; al cerrar la
+  pestaña solo se recuperan ~0,4 MB (las bibliotecas quedan cargadas), por eso no hay descarga por
+  inactividad. Solo un proceso aparte la daría.
+- **MP3:** OLPC OS 13.2 (Fedora 18) no trae decodificador. Con `gstreamer1-libav` de RPM Fusion Free
+  (un solo paquete, 2,9 MB, 7,6 MB instalado, con su libav dentro) el plugin ofrece los MP3 con un clic
+  (sin él, solo en «Abrir con»). Instalación en el XO (el paquete no está firmado con una clave que
+  el sistema conozca; comprobar la suma SHA-256 contra la del repositorio):
+
+  ```
+  curl -LO https://rpmfusion-archive.ip-connect.vn.ua/free-archive/fedora/releases/18/Everything/i386/os/gstreamer1-libav-1.0.2-2.fc18.i686.rpm
+  sudo rpm -ivh gstreamer1-libav-1.0.2-2.fc18.i686.rpm        # quitar: sudo rpm -e gstreamer1-libav
+  ```
+
+  Trae también decodificadores AAC y H.264 (no ofrecidos: el Geode no mueve H.264 con soltura).
+  libav registra los decodificadores de MP3 con rango 0, y `decodebin` no elige elementos de rango 0:
+  el plugin sube `avdec_mp3` (coma fija; ~40 % menos CPU que `avdec_mp3float` en el Geode) a
+  `Gst.Rank.MARGINAL`. Medido: ~13 % de CPU reproduciendo MP3 a 64 kbps. Una actualización del
+  sistema operativo puede quitar el paquete (no es de la imagen).
+- **Módulos de tracker** (`.mod`, `.xm`, `.it`, `.s3m`, `.stm`; tipos `audio/x-mod`, `x-xm`, `x-it`, `x-s3m`,
+  `x-stm`): los decodifica el elemento `modplug` de GStreamer, del paquete `gstreamer1-plugins-bad-free-extras`
+  (Fedora 18, repositorio de actualizaciones; rango primario, no hace falta subirlo). Arrastra
+  `gstreamer1-plugins-bad-free`, ImageMagick, libass, schroedinger y zbar: unos 13 MB instalados, 7,7 de ellos
+  ImageMagick. El plugin los ofrece con un clic si existe `libgstmodplug.so` (sin él, solo en «Abrir con»).
+  Medido en el XO-1: un módulo de 4 canales, ~25-35 % de CPU. Si `yum` se queda sin memoria, los scriptlets
+  `%post` fallan ('Cannot allocate memory'): ejecutar `sudo ldconfig`. Otros tipos que modplug no lee (`.mo3`, `.far`,
+  `.amf`, `.okt`, `.umx`, `.itz`...) no están en la lista.
+- Pausa al pasar a segundo plano; el estado del Diario guarda posición (0 si llegó al final) y volumen.
+- Las capturas de `dbg.py shot` no incluyen el vídeo (es una ventana nativa de X): probar a ojo.
+- Convertir en el PC: `ffmpeg -i in.mp4 -c:v libtheora -q:v 5 -c:a libvorbis -q:a 3 out.ogv`.
 
 ## Dónde se buscan
 
@@ -92,7 +152,8 @@ forzar uno en un archivo que ninguno reconoce.
 
 El plugin recibe `host` (`PluginHost` en `archivos.py`), su única puerta de entrada:
 `show_message(texto, título)`, `ask(título, texto, botones, callback)` (aviso con
-botones), `close_tab(tab)`, `open_path(ruta)`, `data_dir`, `add_icon_path(ruta)`.
+botones), `close_tab(tab)`, `open_path(ruta)`, `data_dir`, `add_icon_path(ruta)`,
+`set_fullscreen(bool)` (pantalla completa sin barras ni pestañas).
 
 ## Qué hace la actividad por ti
 

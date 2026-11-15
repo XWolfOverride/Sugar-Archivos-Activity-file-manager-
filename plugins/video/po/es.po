@@ -1,0 +1,46 @@
+msgid ""
+msgstr "Project-Id-Version: video\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: plugins/video/plugin.py:50
+msgid "Media player"
+msgstr "Reproductor multimedia"
+
+#: plugins/video/plugin.py:129 plugins/video/plugin.py:186
+msgid "Play"
+msgstr "Reproducir"
+
+#: plugins/video/plugin.py:147
+msgid "Volume"
+msgstr "Volumen"
+
+#: plugins/video/plugin.py:153
+msgid "Normal: fit to the window"
+msgstr "Normal: ajustado a la ventana"
+
+#: plugins/video/plugin.py:156
+msgid "Actual size (1:1)"
+msgstr "Tamaño real (1:1)"
+
+#: plugins/video/plugin.py:158
+msgid "Full screen"
+msgstr "Pantalla completa"
+
+#: plugins/video/plugin.py:377
+msgid "The sound device is busy"
+msgstr "El dispositivo de sonido está ocupado"
+
+#: plugins/video/plugin.py:186
+msgid "Pause"
+msgstr "Pausa"
+
+#: plugins/video/plugin.py:330
+msgid "GStreamer is not available"
+msgstr "GStreamer no está disponible"
+
+#: plugins/video/plugin.py:379
+msgid "The video output is busy"
+msgstr "La salida de vídeo está ocupada"
+
+#: plugins/video/plugin.py:380
+msgid "Could not play"
+msgstr "No se pudo reproducir"

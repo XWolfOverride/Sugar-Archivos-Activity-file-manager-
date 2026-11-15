@@ -26,7 +26,7 @@ class MountsTests(unittest.TestCase):
     def test_returns_sorted_existing_folders(self):
         found = places.removable_mounts()     # puede estar vacía
         self.assertEqual(found, sorted(found, key=lambda e: e[1]))
-        for name, path in found:
+        for name, path, _uuid in found:
             self.assertTrue(name)
             self.assertTrue(os.path.isdir(path))
             self.assertTrue(places.is_removable_path(path))

@@ -14,10 +14,6 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: plugins/text/plugin.py
-msgid "Save all"
-msgstr ""
-
 #: plugins/text/plugin.py:100
 msgid "Undo"
 msgstr ""
@@ -42,11 +38,11 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: plugins/text/plugin.py:194
+#: plugins/text/plugin.py:201
 msgid "Find"
 msgstr ""
 
-#: plugins/text/plugin.py:196
+#: plugins/text/plugin.py:203
 msgid "Replace with"
 msgstr ""
 
@@ -67,101 +63,105 @@ msgstr ""
 msgid "Larger text"
 msgstr ""
 
-#: plugins/text/plugin.py:169 plugins/text/plugin.py:204
+#: plugins/text/plugin.py:176 plugins/text/plugin.py:211
 msgid "Close"
 msgstr ""
 
-#: plugins/text/plugin.py:199
+#: plugins/text/plugin.py:206
 msgid "Previous"
 msgstr ""
 
-#: plugins/text/plugin.py:200
+#: plugins/text/plugin.py:207
 msgid "Next"
 msgstr ""
 
-#: plugins/text/plugin.py:201
+#: plugins/text/plugin.py:208
 msgid "Replace"
 msgstr ""
 
-#: plugins/text/plugin.py:202
+#: plugins/text/plugin.py:209
 msgid "Replace all"
 msgstr ""
 
-#: plugins/text/plugin.py:287
+#: plugins/text/plugin.py:240
+msgid "Save all"
+msgstr ""
+
+#: plugins/text/plugin.py:298
 #, python-format
 msgid "Line %(line)d, column %(col)d"
 msgstr ""
 
-#: plugins/text/plugin.py:290
+#: plugins/text/plugin.py:301
 msgid "Plain text"
 msgstr ""
 
-#: plugins/text/plugin.py:292
+#: plugins/text/plugin.py:303
 msgid "read only"
 msgstr ""
 
-#: plugins/text/plugin.py:304
+#: plugins/text/plugin.py:315
 msgid "The file changed on disk"
 msgstr ""
 
-#: plugins/text/plugin.py:305
+#: plugins/text/plugin.py:316
 msgid "Overwrite it with your version?"
 msgstr ""
 
-#: plugins/text/plugin.py:333
+#: plugins/text/plugin.py:344
 msgid "Saved"
 msgstr ""
 
-#: plugins/text/plugin.py:371
+#: plugins/text/plugin.py:382
 msgid "Not found"
 msgstr ""
 
-#: plugins/text/plugin.py:412
+#: plugins/text/plugin.py:423
 #, python-format
 msgid "%d replacement"
 msgid_plural "%d replacements"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/text/plugin.py:166
+#: plugins/text/plugin.py:173
 msgid "Output"
 msgstr ""
 
-#: plugins/text/plugin.py:325
+#: plugins/text/plugin.py:336
 msgid "Error"
 msgstr ""
 
-#: plugins/text/plugin.py:332
+#: plugins/text/plugin.py:343
 #, python-format
 msgid "The file had characters that %s cannot store; it was saved as UTF-8."
 msgstr ""
 
-#: plugins/text/plugin.py:483
+#: plugins/text/plugin.py:494
 msgid "Stopped"
 msgstr ""
 
-#: plugins/text/plugin.py:306
+#: plugins/text/plugin.py:317
 msgid "Overwrite"
 msgstr ""
 
-#: plugins/text/plugin.py:307
+#: plugins/text/plugin.py:318
 msgid "Cancel"
 msgstr ""
 
-#: plugins/text/plugin.py:480
+#: plugins/text/plugin.py:491
 msgid "Could not start the script"
 msgstr ""
 
-#: plugins/text/plugin.py:324
+#: plugins/text/plugin.py:335
 msgid "Could not save the file"
 msgstr ""
 
-#: plugins/text/plugin.py:485
+#: plugins/text/plugin.py:496
 #, python-format
 msgid "Killed by signal %d"
 msgstr ""
 
-#: plugins/text/plugin.py:487
+#: plugins/text/plugin.py:498
 #, python-format
 msgid "Finished (exit code %d)"
 msgstr ""

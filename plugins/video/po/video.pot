@@ -1,0 +1,47 @@
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: video\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: plugins/video/plugin.py:50
+msgid "Media player"
+msgstr ""
+
+#: plugins/video/plugin.py:129 plugins/video/plugin.py:186
+msgid "Play"
+msgstr ""
+
+#: plugins/video/plugin.py:147
+msgid "Volume"
+msgstr ""
+
+#: plugins/video/plugin.py:153
+msgid "Normal: fit to the window"
+msgstr ""
+
+#: plugins/video/plugin.py:156
+msgid "Actual size (1:1)"
+msgstr ""
+
+#: plugins/video/plugin.py:158
+msgid "Full screen"
+msgstr ""
+
+#: plugins/video/plugin.py:377
+msgid "The sound device is busy"
+msgstr ""
+
+#: plugins/video/plugin.py:186
+msgid "Pause"
+msgstr ""
+
+#: plugins/video/plugin.py:330
+msgid "GStreamer is not available"
+msgstr ""
+
+#: plugins/video/plugin.py:379
+msgid "The video output is busy"
+msgstr ""
+
+#: plugins/video/plugin.py:380
+msgid "Could not play"
+msgstr ""

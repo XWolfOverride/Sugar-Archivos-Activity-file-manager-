@@ -1,0 +1,7 @@
+<?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 55 55" height="55px" version="1.1" viewBox="0 0 55 55" width="55px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g display="block" id="archivos-video-fit">
+	<circle cx="27.5" cy="27.5" r="22.5" fill="#FFFFFF"/>
+	<rect x="13" y="18" width="29" height="19" rx="2" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="20" y1="27.5" x2="35" y2="27.5" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<polyline points="24,23 19.5,27.5 24,32" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<polyline points="31,23 35.5,27.5 31,32" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg>

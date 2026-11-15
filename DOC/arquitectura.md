@@ -89,3 +89,14 @@ defecto de Gio → actividad de Sugar, solo si es **la única** que declara el t
 `application/octet-stream`, que casi todas declaran). Esos genéricos sí salen en
 «Abrir con». El `uri` es `file://` + la ruta **sin codificar** (Read quita el prefijo
 y usa el resto como ruta). Esta misma actividad se excluye de la lista.
+
+## Ir a, favoritas y propiedades
+
+`archivos.py` (`_fill_goto`/`_tb_goto`) rellena la **paleta** del botón (un `Palette` de Sugar con `PaletteMenuBox`, no un `Gtk.Menu`: sobre un `ToolButton` de Sugar un `Gtk.Menu.popup` no llega a verse, solo sale la paleta del tooltip) al pasar el ratón y al pulsar: `places.removable_mounts()`
+(Gio solo en ese momento), separador y `favorites.load()`. Los datos viven en
+`~/.config/archivos/favorites.json` (escritura atómica con `.part`). `PropertiesDialog`
+(`propsdialog.py`, ventana modal con el aspecto del Panel de control: barra oscura con
+nombre, estrella, cancelar y aceptar; contenido sobre fondo blanco) usa `fileprops.describe` para leer y `fileprops.apply_changes` para
+escribir; los errores salen dentro del propio diálogo (modal: una alerta de Sugar
+quedaría bloqueada). La fecha de creación se pide a Gio (`time::created`); si el sistema
+de ficheros no la guarda se enseña «No consta».

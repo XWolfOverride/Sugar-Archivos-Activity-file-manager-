@@ -9,6 +9,10 @@ Simple, tabbed file manager activity for **Sugar** (OLPC). A low-cost
 "Nautilus": a single file list per tab, no dual pane, no thumbnails, no side
 bars, built for machines with very little memory.
 
+<p align="center">
+  <img src="DOC/img/archivos.png" alt="Archivos: lista de una carpeta con pestañas" width="640">
+</p>
+
 ## Qué hace
 
 - Navega por carpetas; cada pestaña es una carpeta. Siempre hay al menos una
@@ -20,10 +24,19 @@ bars, built for machines with very little memory.
 - **Barra de estado:** «3 carpetas y 12,4 MB en 5 archivos» (con plurales y coma
   decimal según el idioma); con elementos seleccionados, cuántos y su peso.
 - **Plugins** que abren archivos dentro de la actividad, en pestañas propias
-  (ver [DOC/plugins.md](DOC/plugins.md)). Traen dos:
+  (ver [DOC/plugins.md](DOC/plugins.md)). Traen tres:
   - **Visor de imágenes**: un clic en una imagen la abre ajustada a la ventana
     (carga perezosa y reducida: una foto de 12 MP, en ~2 s); ← / → recorren las
     imágenes de la carpeta; botón de tamaño real.
+  - **Reproductor multimedia** (GStreamer): Ogg/Theora y WebM/VP8 con audio Vorbis (y audio
+    Ogg); reproducir/pausa, posición, volumen, y tres modos de ver: normal (ajustado
+    a la ventana), 1:1 y pantalla completa (sin barras; Intro o espacio pausan, Esc sale). Es lo que decodifica el
+    sistema de serie: para MP4 u otros formatos, convertir antes a Theora o WebM
+    (p. ej. `ffmpeg -i in.mp4 -c:v libtheora -q:v 5 -c:a libvorbis -q:a 3 out.ogv`).
+    **MP3:** el sistema no trae decodificador; con el paquete `gstreamer1-libav` (ver
+    [DOC/plugins.md](DOC/plugins.md)) se reproduce con un clic.
+    **Módulos de tracker** (`.mod`, `.xm`, `.it`, `.s3m`, `.stm`): con `gstreamer1-plugins-bad-free-extras`
+    (elemento `modplug`) también se reproducen con un clic.
   - **Editor de texto** (GtkSourceView): números de línea, resaltado de sintaxis
     (Pascal, Python, C, shell...), deshacer, buscar y reemplazar, guardado atómico,
     conserva codificación (UTF-8/Latin-1) y finales de línea (LF/CRLF); avisa de
@@ -39,6 +52,12 @@ bars, built for machines with very little memory.
   (u otra actividad que declare ese tipo en su `activity.info`) sin copiarlo al Diario.
   Con un clic si no hay plugin ni aplicación de escritorio para el tipo y solo una
   actividad lo reconoce; el resto de opciones, en *Abrir con*.
+- **Ir a** (barra principal): menú con las unidades extraíbles montadas, un separador
+  y las **carpetas favoritas**. Se marcan con la estrella del diálogo de propiedades
+  y se guardan en `~/.config/archivos/` (de la aplicación, compartidas entre
+  instancias; no van al Diario).
+- **Propiedades** (clic secundario o Alt+Intro): tipo MIME, tamaño, fechas, y permisos y
+  grupo editables (el propietario solo con root).
 - **Comprimir y extraer** (`.tar`, `.tar.gz`, `.tgz`): clic secundario sobre uno
   o varios elementos → *Comprimir* → *Crear .tar* o *Crear .tar.gz*. Con un
   elemento el archivo lleva su nombre; con varios, el de la carpeta actual.
@@ -81,9 +100,10 @@ bars, built for machines with very little memory.
 | Ctrl+C / Ctrl+X / Ctrl+V | Copiar / cortar / pegar |
 | Retroceso o Alt+↑ | Subir una carpeta |
 | Alt+Inicio | Ir a la carpeta personal (también, la casita de la barra de dirección) |
-| Botón USB | Junto a la casita: menú con las unidades extraíbles montadas por Sugar (cada partición, con un icono de otro color) |
+| Botón «Ir a» | Barra principal, antes de «Carpeta nueva»: unidades montadas y carpetas favoritas |
 | F5 / F7 | En el editor: ejecutar `run.sh` / compilar con `build.sh` |
 | Ctrl+L | Escribir una ruta |
+| Alt+Intro | Propiedades |
 | Ctrl+H | Mostrar u ocultar archivos ocultos |
 | F5 | Actualizar |
 

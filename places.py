@@ -5,6 +5,7 @@ Sugar monta las memorias USB (cada partición, por separado) y las tarjetas en
 ``/run/media/<usuario>/<etiqueta>``. Se consultan al abrir el menú, no antes:
 así no hay que vigilar nada ni gastar memoria mientras no se usan.
 """
+import hashlib
 import os
 
 _ROOTS = ('/run/media/', '/media/')
@@ -17,8 +18,19 @@ def is_removable_path(path):
                for root in _ROOTS)
 
 
+def mount_color(uuid, path):
+    """El color que la shell de Sugar da a una unidad (el del Diario): un
+    hash del UUID, o del nombre de la carpeta si no tiene, para que sea
+    siempre el mismo."""
+    from sugar3.graphics.xocolor import XoColor, colors
+    sha = hashlib.sha1()
+    sha.update(uuid or os.path.basename(path))
+    index = hash(sha.digest()) % len(colors)
+    return XoColor('%s,%s' % (colors[index][0], colors[index][1]))
+
+
 def removable_mounts():
-    """``[(nombre, ruta)]`` de las unidades extraíbles montadas, por ruta.
+    """``[(nombre, ruta, uuid)]`` de las unidades extraíbles montadas, por ruta.
 
     Gio se importa aquí para que el resto del módulo (y sus pruebas) no lo
     necesiten.
@@ -37,7 +49,8 @@ def removable_mounts():
             if not path or not is_removable_path(path) \
                     or not os.path.isdir(path):
                 continue
-            found.append((mount.get_name() or os.path.basename(path), path))
+            found.append((mount.get_name() or os.path.basename(path), path,
+                          mount.get_uuid()))
         except Exception:
             continue
     found.sort(key=lambda entry: entry[1])

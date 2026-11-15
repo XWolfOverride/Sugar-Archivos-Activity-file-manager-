@@ -22,6 +22,18 @@ sigue funcionando con rutas normales.
   montadas no avisan de cambios (hay que actualizar a mano, F5); los montajes
   pueden tardar o fallar, así que la operación no debe bloquear la interfaz.
 
+## Abrir el Terminal en una carpeta
+
+Poder pedir desde Archivos (menú contextual o botón: «Abrir terminal aquí») que se abra la actividad **Terminal**
+de Sugar con la ruta de la pestaña actual como directorio de trabajo. Por mirar:
+
+- Si la actividad Terminal acepta algún parámetro de arranque (directorio, URI o variable de entorno) y cómo
+  pasárselo con `activityfactory.create_with_uri` (la misma vía que usa Archivos para abrir un PDF en Read).
+- Si no lo admite: opciones alternativas, por ejemplo dejar la ruta en un fichero que lea el `.bashrc`, o ofrecer
+  también `gnome-terminal --working-directory=<ruta>` (aplicación externa a Sugar, con el marco de Metacity).
+- Qué hacer con rutas con espacios o caracteres raros, y si se ofrece solo en carpetas o también en archivos
+  (abriendo la carpeta que los contiene).
+
 ## Pendiente de pulir
 
 - Arrastrar y soltar entre pestañas.

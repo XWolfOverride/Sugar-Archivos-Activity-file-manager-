@@ -1,0 +1,9 @@
+<?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 55 55" height="55px" version="1.1" viewBox="0 0 55 55" width="55px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g display="block" id="archivos-video-actual">
+	<circle cx="27.5" cy="27.5" r="22.5" fill="#FFFFFF"/>
+	<polyline points="11,23 16,19 16,36" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="11" y1="36" x2="21" y2="36" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<circle cx="27.5" cy="25" r="2" fill="#4C4D4F"/>
+	<circle cx="27.5" cy="33" r="2" fill="#4C4D4F"/>
+	<polyline points="34,23 39,19 39,36" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="34" y1="36" x2="44" y2="36" fill="none" stroke="#4C4D4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg>

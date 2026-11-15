@@ -67,6 +67,22 @@ doble panel. Autor: XWolf. Licencia MIT.
   carpeta `po/` por plugin. Los textos que se traducen más tarde llevan `N_()`
   (si no, la herramienta no los ve). `tests/test_i18n.py` ejecuta `check`: un texto
   sin traducir rompe las pruebas. Flujo en `DOC/i18n.md`.
+- **Multimedia** (`plugins/video`, «Reproductor multimedia»): GStreamer 1.0 importado al abrir la primera pestaña (no al cargar
+  el plugin), `playbin` + `xvimagesink` en un `Gtk.DrawingArea`. El XO-1 solo decodifica Theora,
+  VP8 y Vorbis (Ogg/WebM; sin libav: ni H.264 ni MP3). Modos normal (ajustado), 1:1 (`set_render_rectangle` centrado) y pantalla completa
+  (`host.set_fullscreen`: la actividad oculta barra, pestañas y progreso). Se pausa al ocultarse la pestaña.
+  El `DrawingArea` va sin doble búfer ni fondo (si no, GTK tapa el overlay Xv) y la actividad
+  desactiva el botón de esquina de Sugar (`enable_fullscreen_mode = False`).
+  **MP3:** el sistema no trae decodificador; con `gstreamer1-libav` (RPM Fusion, ver `DOC/plugins.md`)
+  el plugin lo ofrece con un clic (se detecta por el fichero `libgstlibav.so`/`mad`/`mpg123`, sin cargar
+  GStreamer). libav deja sus decodificadores de MP3 con rango 0: el plugin sube `avdec_mp3` (coma fija).
+  **Módulos** (`.mod`/`.xm`/`.it`/`.s3m`/`.stm`): con `gstreamer1-plugins-bad-free-extras` (elemento `modplug`, rango
+  primario, sin ajuste de rango) el plugin los ofrece con un clic; se detecta por `libgstmodplug.so`.
+  Audio (ALSA directo) y Xv son de un solo uso: al reproducir se sueltan las demás pestañas
+  multimedia y una pestaña quieta se suelta por inactividad (ver `DOC/plugins.md`). Solo audio: panel
+  negro sin botones de modos.
+  Medido en el XO: GStreamer cuesta ~4 MB al iniciar y ~5 MB al reproducir; al cerrar solo se
+  recuperan ~0,4 MB, así que no se descarga por inactividad (no se puede descargar un módulo C).
 - **Abrir con** lista todos los plugins (forzar uno en un archivo no reconocido); un
   plugin forzado que no puede con el archivo lo dice en su propia pestaña o con un aviso.
 - **Build/Run del editor:** botones solo si hay `build.sh`/`run.sh` en la carpeta del
@@ -80,11 +96,18 @@ doble panel. Autor: XWolf. Licencia MIT.
 - **Editor:** esquema propio `plugins/text/styles/archivos.xml` (copia de «classic» con
   columna de números en gris claro; GtkSourceView 3.6 no admite `parent-scheme`) y
   `set_left_margin(8)`. El relleno del renderizador de números no se puede cambiar.
-- **Navegación:** la casita (antes de «subir») y Alt+Inicio van a `~`. Junto a ella, un
-  solo botón USB abre un menú con las unidades montadas en `/run/media` o `/media`
-  (`places.py`, Gio solo al abrir el menú, sin vigilar nada); un icono de color
-  distinto por unidad (`archivos-drive`, paleta en `fileview._DRIVE_COLORS`). La
-  tarjeta SD de `/mnt/sd` (fstab) no la monta Sugar y no sale.
+- **Navegación:** la casita (antes de «subir») y Alt+Inicio van a `~`. El botón **Ir a** de la
+  barra principal abre un menú con las unidades montadas en `/run/media` o `/media`
+  (`places.py`, Gio solo al abrir el menú, sin vigilar nada; el color de cada unidad es el que le da el Diario de Sugar: hash SHA-1 del UUID o del nombre de la carpeta, `places.mount_color`), un separador y las carpetas favoritas. La tarjeta SD
+  de `/mnt/sd` (fstab) no la monta Sugar y no sale.
+- **Favoritas** (`favorites.py`, sin GTK): `~/.config/archivos/favorites.json`, de la
+  aplicación y no del Diario (el Diario es por instancia: «Empezar nuevo» partiría sin
+  favoritas; se relee cada vez, así las instancias se ven entre sí). Las que ya no existen
+  salen desactivadas (puede ser un USB sin enchufar) y se quitan a mano.
+- **Propiedades** (`fileprops.py` sin GTK + `propsdialog.py`): nada se aplica hasta
+  «Aceptar». chmod solo propietario/root, conserva setuid/setgid/sticky; el propietario solo
+  con root; el grupo, uno de los propios. Linux no guarda fecha de creación en este
+  núcleo: se enseña «No consta» y el cambio de estado (ctime).
 - **Actividades de Sugar como visores** (`sugaractivities.py`): un clic abre un PDF en
   Read, etc., con `activityfactory.create_with_uri` (sin copiar al Diario). Solo si no
   hay plugin ni aplicación de Gio y una única actividad declara el tipo (ignorando los
@@ -114,9 +137,10 @@ doble panel. Autor: XWolf. Licencia MIT.
 | `tabs.py` | `Gtk.Notebook` y etiqueta de pestaña con botón de cerrar |
 | `places.py` | Unidades extraíbles montadas (para el botón USB) |
 | `sugaractivities.py` | Actividades de Sugar instaladas que abren un tipo de archivo (sin GTK) |
+| `favorites.py`, `fileprops.py`, `propsdialog.py` | Carpetas favoritas, datos/permisos de un archivo (sin GTK) y su diálogo |
 | `i18n.py` | Textos es/en (la clave es el texto en inglés) |
 | `pluginapi.py`, `pluginmgr.py`, `pluginui.py` | Contrato (sin GTK), gestor (sin GTK) y base gráfica de los plugins |
-| `plugins/image/`, `plugins/text/` | Visor de imágenes y editor de texto (cada uno con su `po/`) |
+| `plugins/image/`, `plugins/text/`, `plugins/video/` | Visor de imágenes, editor de texto y reproductor de vídeo (cada uno con su `po/`) |
 | `i18n.py`, `po/`, `tools/translate.py` | Traducciones con gettext (`.po` leídos directamente) y sus herramientas |
 | `debugsrv.py`, `tools/dbg.py` | Servidor/cliente de depuración (solo con `ARCHIVOS_DEBUG=1`) |
 | `tests/` | `unittest` de `fileops` (sin pantalla) |

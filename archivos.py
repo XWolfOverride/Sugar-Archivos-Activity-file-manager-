@@ -15,12 +15,17 @@ from sugar3.graphics.alert import Alert, ConfirmationAlert  # noqa: E402
 from sugar3.graphics.icon import Icon  # noqa: E402
 from sugar3.graphics.toolbarbox import (  # noqa: E402
     ToolbarBox, ToolbarButton)
+from sugar3.graphics.palettemenu import (  # noqa: E402
+    PaletteMenuBox, PaletteMenuItem, PaletteMenuItemSeparator)
 from sugar3.graphics.toolbutton import ToolButton  # noqa: E402
 
 import archives  # noqa: E402
+import favorites  # noqa: E402
 import fileops  # noqa: E402
 import ops  # noqa: E402
 import pluginmgr  # noqa: E402
+import places  # noqa: E402
+import propsdialog  # noqa: E402
 from fileview import FileView  # noqa: E402
 from i18n import N_, tr  # noqa: E402
 from tabs import TabNotebook  # noqa: E402
@@ -82,12 +87,21 @@ class PluginHost(object):
     def add_icon_path(self, path):
         Gtk.IconTheme.get_default().append_search_path(path)
 
+    def set_fullscreen(self, on):
+        """Pantalla completa: sin barra, pestañas ni progreso (la pide una pestaña)."""
+        self._app.set_fullscreen(on)
+
 
 class ArchivosActivity(activity.Activity):
 
     def __init__(self, handle):
         activity.Activity.__init__(self, handle)
         self.max_participants = 1
+        # Sin el botón «salir de pantalla completa» de Sugar (en una esquina,
+        # donde está el marco de Sugar): el plugin de vídeo sale con Esc.
+        self.props.enable_fullscreen_mode = False
+        self._fullscreen = False
+        self._fs_progress = False
         self.show_hidden = False
         self._clip_mode = None
         self._clip_paths = []
@@ -170,6 +184,12 @@ class ArchivosActivity(activity.Activity):
         # carpeta nueva y archivo nuevo; cada plugin, lo que devuelva su
         # ``toolbar_actions()`` (ver ``_show_context_actions``).
         self._folder_actions = []
+        goto = self._tool(('archivos-usb',), tr('Go to'), self._tb_goto)
+        self._goto_button = goto
+        goto.connect('enter-notify-event', lambda *_a: self._fill_goto())
+        bar.insert(goto, -1)
+        goto.show()
+        self._folder_actions.append(goto)
         for icons, tip, callback in (
                 (('archivos-new-folder',), tr('New folder'),
                  self._tb_new_folder),
@@ -194,6 +214,7 @@ class ArchivosActivity(activity.Activity):
         stop.show()
 
         self.set_toolbar_box(box)
+        self._toolbar_box = box
         box.show()
 
     def _build_canvas(self):
@@ -224,6 +245,23 @@ class ArchivosActivity(activity.Activity):
         self.set_canvas(root)
         root.show_all()
         self._progress_box.hide()
+
+    def set_fullscreen(self, on):
+        if on == self._fullscreen:
+            return
+        self._fullscreen = on
+        if on:
+            self._fs_progress = self._progress_box.get_visible()
+            self._toolbar_box.hide()
+            self._notebook.set_show_tabs(False)
+            self._progress_box.hide()
+            self.fullscreen()
+        else:
+            self.unfullscreen()
+            self._toolbar_box.show()
+            self._notebook.set_show_tabs(True)
+            if self._fs_progress:
+                self._progress_box.show()
 
     def _update_toolbar_state(self, page):
         """Las acciones de archivos solo valen en pestañas de carpeta."""
@@ -480,6 +518,71 @@ class ArchivosActivity(activity.Activity):
         view = self.current_view()
         if view:
             view.new_file()
+
+    def _fill_goto(self):
+        """Rellena la paleta de «Ir a»: unidades extraíbles montadas, un
+        separador (solo si hay de las dos cosas) y las carpetas favoritas.
+        Se consulta todo al abrirla (nada se vigila)."""
+        view = self.current_view()
+        if view is None:
+            return
+        palette = self._goto_button.get_palette()
+        box = PaletteMenuBox()
+        drives = places.removable_mounts()
+        stars = favorites.load()
+
+        def go(path):
+            palette.popdown(True)
+            view.navigate(path)
+
+        def add(text, icon, path, color=None, enabled=True):
+            item = PaletteMenuItem(text, icon_name=icon, xo_color=color)
+            item.set_tooltip_text(path)
+            item.set_sensitive(enabled)
+            if enabled:
+                item.connect('activate', lambda _i, p=path: go(p))
+            box.append_item(item)
+
+        for name, path, uuid in drives:
+            add(name, 'archivos-drive', path, places.mount_color(uuid, path))
+        if drives and stars:
+            box.append_item(PaletteMenuItemSeparator())
+        missing = False
+        for path in stars:
+            exists = os.path.isdir(path)
+            missing = missing or not exists
+            add(os.path.basename(path) or '/', 'archivos-star-on', path,
+                enabled=exists)
+        if not drives and not stars:
+            item = PaletteMenuItem(tr('No drives mounted'))
+            item.set_sensitive(False)
+            box.append_item(item)
+        if missing:
+            box.append_item(PaletteMenuItemSeparator())
+            item = PaletteMenuItem(tr('Remove missing favorites'))
+            item.connect('activate', lambda _i: (
+                favorites.remove_missing(), palette.popdown(True)))
+            box.append_item(item)
+        box.show_all()
+        palette.set_content(box)
+
+    def _tb_goto(self):
+        """Clic en «Ir a»: abre la paleta (un menú de Sugar, no un Gtk.Menu)."""
+        if self.current_view() is None:
+            return
+        self._fill_goto()
+        self._goto_button.get_palette().popup(immediate=True)
+
+    def show_properties(self, path, view=None):
+        """Diálogo de propiedades de ``path``."""
+        try:
+            dialog = propsdialog.PropertiesDialog(
+                self, path, on_done=(view.reload if view is not None
+                                     else None))
+        except fileops.FileOpError as exc:
+            self.show_message(str(exc))
+            return
+        dialog.show()
 
     def _tb_up(self):
         view = self.current_view()

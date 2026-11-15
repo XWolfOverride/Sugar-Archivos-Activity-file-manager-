@@ -34,109 +34,121 @@ msgstr ""
 msgid "Could not extract"
 msgstr ""
 
-#: archivos.py:31
+#: archivos.py:36
 msgid "Copying"
 msgstr ""
 
-#: archivos.py:31
+#: archivos.py:36
 msgid "Moving"
 msgstr ""
 
-#: archivos.py:32
+#: archivos.py:37
 msgid "Deleting"
 msgstr ""
 
-#: archivos.py:32 archivos.py:33
+#: archivos.py:37 archivos.py:38
 msgid "Compressing"
 msgstr ""
 
-#: archivos.py:33
+#: archivos.py:38
 msgid "Extracting"
 msgstr ""
 
-#: archivos.py:496
+#: archivos.py:627
 msgid "This cannot be undone."
 msgstr ""
 
-#: archivos.py:495
+#: archivos.py:178
+msgid "Go to"
+msgstr ""
+
+#: archivos.py:626
 msgid "Delete these items?"
 msgstr ""
 
-#: archivos.py:516
+#: archivos.py:647
 msgid "Error"
 msgstr ""
 
-#: archivos.py:519
+#: archivos.py:650 propsdialog.py:115
 msgid "OK"
 msgstr ""
 
-#: archivos.py:577
+#: archivos.py:708
 msgid "Save changes before closing?"
 msgstr ""
 
-#: archivos.py:138 fileview.py:533
+#: archivos.py:147 fileview.py:573
 msgid "Copy"
 msgstr ""
 
-#: archivos.py:139 fileview.py:534
+#: archivos.py:148 fileview.py:574
 msgid "Cut"
 msgstr ""
 
-#: archivos.py:140 fileview.py:539
+#: archivos.py:149 fileview.py:579
 msgid "Paste"
 msgstr ""
 
-#: archivos.py:141 fileview.py:543
+#: archivos.py:150 fileview.py:583
 msgid "Rename"
 msgstr ""
 
-#: archivos.py:142 fileview.py:544
+#: archivos.py:151 fileview.py:584
 msgid "Delete"
 msgstr ""
 
-#: archivos.py:153 fileview.py:109
+#: archivos.py:162 fileview.py:110
 msgid "Up"
 msgstr ""
 
-#: archivos.py:154 fileview.py:568
+#: archivos.py:163 fileview.py:608
 msgid "Refresh"
 msgstr ""
 
-#: archivos.py:166 fileview.py:561 fileview.py:650
+#: archivos.py:185 fileview.py:601 fileview.py:694
 msgid "New folder"
 msgstr ""
 
-#: archivos.py:168 fileview.py:562 fileview.py:660
+#: archivos.py:187 fileview.py:602 fileview.py:704
 msgid "New file"
 msgstr ""
 
-#: archivos.py:195 archivos.py:534
+#: archivos.py:217 archivos.py:665 propsdialog.py:111
 msgid "Cancel"
 msgstr ""
 
-#: archivos.py:282
+#: archivos.py:346
 msgid "Your changes will be lost if you do not save them."
 msgstr ""
 
-#: archivos.py:492
+#: archivos.py:530
+msgid "No drives mounted"
+msgstr ""
+
+#: archivos.py:535
+msgid "Remove missing favorites"
+msgstr ""
+
+#: archivos.py:623
 #, python-format
 msgid "Delete \"%s\"?"
 msgstr ""
 
-#: archivos.py:532
+#: archivos.py:663
 msgid "Save"
 msgstr ""
 
-#: archivos.py:533
+#: archivos.py:664
 msgid "Discard"
 msgstr ""
 
-#: archivos.py:281
+#: archivos.py:345
 #, python-format
 msgid "Save changes to \"%s\"?"
 msgstr ""
 
-#: archivos.py:375 fileview.py:419
+#: archivos.py:441 fileview.py:418 fileview.py:449
 msgid "Could not open the file"
 msgstr ""
 
@@ -184,104 +196,194 @@ msgstr ""
 msgid "Could not move"
 msgstr ""
 
-#: fileops.py:129 fileview.py:358
+#: fileops.py:129 fileview.py:359
 msgid "Cannot read this folder"
 msgstr ""
 
-#: fileview.py:114 fileview.py:189
+#: fileprops.py:82
+msgid "Could not read"
+msgstr ""
+
+#: fileprops.py:152
+msgid "Unknown user"
+msgstr ""
+
+#: fileprops.py:159
+msgid "Unknown group"
+msgstr ""
+
+#: fileprops.py:182
+msgid "Could not change"
+msgstr ""
+
+#: fileview.py:115 fileview.py:190
 msgid "Home"
 msgstr ""
 
-#: fileview.py
-msgid "Drives"
-msgstr ""
-
-#: fileview.py
-msgid "No drives mounted"
-msgstr ""
-
-#: fileview.py:133
+#: fileview.py:134
 msgid "Name"
 msgstr ""
 
-#: fileview.py:315
+#: fileview.py:316
 #, python-format
 msgid "%(folders)s and %(size)s in %(files)s"
 msgstr ""
 
-#: fileview.py:159
+#: fileview.py:610
+msgid "Properties"
+msgstr ""
+
+#: fileview.py:160 propsdialog.py:166
 msgid "Size"
 msgstr ""
 
-#: fileview.py:163
+#: fileview.py:164 propsdialog.py:167
 msgid "Modified"
 msgstr ""
 
-#: fileview.py:310
+#: fileview.py:311
 #, python-format
 msgid "%d selected"
 msgid_plural "%d selected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileview.py:522
+#: fileview.py:562
 msgid "Open"
 msgstr ""
 
-#: fileview.py:563
+#: fileview.py:603
 msgid "Show hidden files"
 msgstr ""
 
-#: fileview.py:316
+#: fileview.py:317
 #, python-format
 msgid "%d folder"
 msgid_plural "%d folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileview.py:317
+#: fileview.py:318
 #, python-format
 msgid "%d file"
 msgid_plural "%d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileview.py:415
-msgid "No application available for this file"
-msgstr ""
-
-#: fileview.py:524
+#: fileview.py:564
 msgid "Open in new tab"
 msgstr ""
 
-#: fileview.py:537
+#: fileview.py:577
 msgid "Paste into folder"
 msgstr ""
 
-#: fileview.py:548
+#: fileview.py:588
 msgid "Extract"
 msgstr ""
 
-#: fileview.py:551
+#: fileview.py:591
 msgid "Create .tar"
 msgstr ""
 
-#: fileview.py:552
+#: fileview.py:592
 msgid "Create .tar.gz"
 msgstr ""
 
-#: fileview.py:557
+#: fileview.py:597
 msgid "Compress"
 msgstr ""
 
-#: fileview.py:354
+#: fileview.py:355
 msgid "Not a folder"
 msgstr ""
 
-#: fileview.py:528
+#: fileview.py:440
+msgid "No application available for this file"
+msgstr ""
+
+#: fileview.py:568
 msgid "Open with"
 msgstr ""
 
 #: i18n.py:226
 msgid "DECIMAL_SEPARATOR"
+msgstr ""
+
+#: propsdialog.py:277
+#, python-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: propsdialog.py:210
+msgid "Read"
+msgstr ""
+
+#: propsdialog.py:210
+msgid "Write"
+msgstr ""
+
+#: propsdialog.py:210
+msgid "Execute"
+msgstr ""
+
+#: propsdialog.py:104
+msgid "Favorite folder"
+msgstr ""
+
+#: propsdialog.py:158
+msgid "Type"
+msgstr ""
+
+#: propsdialog.py:159
+msgid "Location"
+msgstr ""
+
+#: propsdialog.py:168
+msgid "Accessed"
+msgstr ""
+
+#: propsdialog.py:169
+msgid "Changed"
+msgstr ""
+
+#: propsdialog.py:170
+msgid "Created"
+msgstr ""
+
+#: propsdialog.py:202
+msgid "Permissions"
+msgstr ""
+
+#: propsdialog.py:215 propsdialog.py:190
+msgid "Owner"
+msgstr ""
+
+#: propsdialog.py:215 propsdialog.py:191
+msgid "Group"
+msgstr ""
+
+#: propsdialog.py:215
+msgid "Others"
+msgstr ""
+
+#: propsdialog.py:283
+#, python-format
+msgid "%d byte"
+msgid_plural "%d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: propsdialog.py:161
+msgid "Link to"
+msgstr ""
+
+#: propsdialog.py:171
+msgid "Not recorded"
+msgstr ""
+
+#: propsdialog.py:164
+msgid "Contents"
 msgstr ""

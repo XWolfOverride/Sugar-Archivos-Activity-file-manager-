@@ -1,5 +1,23 @@
 # Cambios
 
+## Sin publicar
+
+- **Ir a:** el botón de unidades pasa a la barra principal (antes de «Carpeta nueva») y
+  se convierte en un menú con las unidades montadas, un separador y las carpetas
+  favoritas. Sin unidades ni favoritas, una sola entrada desactivada lo dice; el separador solo
+  sale si hay de las dos. Cada unidad lleva el color que le da el Diario de Sugar.
+- **Propiedades** de archivos y carpetas (clic secundario o Alt+Intro; sin selección,
+  las de la carpeta actual): tipo MIME, tamaño o contenido, fechas, enlace; cambio de
+  permisos y de grupo (y de propietario, solo con root); en carpetas, la estrella que
+  la añade a favoritas.
+- Las favoritas son de la aplicación (`~/.config/archivos/favorites.json`), no del
+  Diario: las ven todas las instancias.
+- **Reproductor multimedia** (plugin, antes «de vídeo»): Ogg/Theora y WebM/VP8 con audio Vorbis, con GStreamer
+  (`playbin` + `xvimagesink`). Modos normal, 1:1 y pantalla completa (sin barras; Esc vuelve al modo normal).
+  Pausa automática al pasar a otra pestaña.
+  También reproduce MP3 y módulos de tracker (`.mod`, `.xm`, `.it`, `.s3m`) si hay un decodificador instalado
+  (ver `DOC/plugins.md`).
+
 ## 0.9
 
 Primera versión publicable.
